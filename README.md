@@ -2,7 +2,7 @@
 
 A professional-grade Streamlit application designed for agency-side strategists. This tool uses **Google Gemini 2.5 Flash-Lite** to analyze new social media captions while perfectly mirroring the tone, structure, and analytical depth of your "Gold Standard" sample reports.
 
-## ✨ Features
+## Features
 
 * **Style Mirroring:** Analyzes new data based on a provided "Gold Standard" sample.
 * **Dynamic Grouping:** Automatically categorizes analysis points (Branding, Engagement, Contest, etc.).
@@ -10,7 +10,7 @@ A professional-grade Streamlit application designed for agency-side strategists.
 * **Clean UI:** A modern, card-based dashboard for easy reading.
 * **One-Click Export:** Download your generated report as a `.txt` or `.md` file.
 
-## 🚀 Quick Start (Local/Codespaces)
+## Quick Start (Local/Codespaces)
 
 1. **Clone the repository:**
 ```bash
@@ -35,7 +35,7 @@ python3 -m streamlit run app.py
 
 
 
-## ☁️ Deployment (Streamlit Cloud)
+## Deployment (Streamlit Cloud)
 
 To publish this app permanently for free:
 
@@ -49,12 +49,16 @@ GEMINI_API_KEY = "your_google_api_key_here"
 
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Frontend:** [Streamlit](https://streamlit.io/)
 * **AI Engine:** [Google Gemini 2.5 Flash-Lite](https://aistudio.google.com/)
 * **Language:** Python 3.12+
 
-## 📝 Usage Note
+## Usage Note
 
 This tool is intended for internal agency review and client deck preparation. It ensures consistency across monthly reports by maintaining the established brand voice used in previous successful analyses.
+
+## License
+
+This project is available for personal use only.
