@@ -252,7 +252,7 @@ Mode A:
 **Category Heading**
 • Analysis paragraph
 
-[Next Category Heading]
+[**Next Category Heading**]
 • Analysis paragraph
 
 Mode B:
