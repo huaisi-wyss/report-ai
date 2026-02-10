@@ -42,8 +42,10 @@ with st.sidebar:
 st.title("📊 Social Media Report Generator")
 
 # Section: The Gold Standard
-sample_text = st.text_area("📋 Step 1: Insert Sample Analysis Structure (Gold Standard)", height=150, 
-                           placeholder="Paste a previous analysis here. The AI will mimic this exact structure and tone.")
+st.subheader("📋 Step 1: Insert Sample Analysis Structure")
+sample_text = st.text_area("Gold Standard Reference (Optional)", height=150, 
+                           placeholder="Paste a previous analysis here to mimic its tone. Leave empty for default professional tone.",
+                           label_visibility="collapsed")
 
 st.divider()
 
@@ -95,13 +97,14 @@ if st.button("🚀 Generate Grouped Report"):
         st.error("❌ API Key Missing from Backend Settings.")
         st.info("Please add 'GEMINI_API_KEY' to your Streamlit Secrets or Environment Variables.")
         st.stop()
-    elif not sample_text or not st.session_state.captions_list[0]["caption"]:
-        st.warning("Please provide a sample and at least one caption.")
+    elif not any(item["caption"].strip() for item in st.session_state.captions_list):
+        st.warning("Please provide at least one caption.")
     else:
         try:
             genai.configure(api_key=api_key)
             model = genai.GenerativeModel('gemini-2.5-flash-lite')
-            
+            reference_instruction = sample_text if sample_text.strip() else "No reference provided. Use a standard, high-level professional agency tone: objective, concise, and analytical."
+
             # ===== MODE LOGIC =====
 
             if mode_selection == "Mode A - Itemised":
@@ -172,7 +175,7 @@ You write concise, professional CA reports for internal review and client decks.
 REFERENCE (GOLD STANDARD):
 The text below represents the exact tone, sentence structure, and analytical depth to follow.
 You must mirror this writing style precisely.
-{sample_text}
+{reference_instruction}
 
 STRICTNESS LEVEL:
 - Very Safe: purely descriptive, no implied judgement.
@@ -243,6 +246,7 @@ STRICT RULES:
    - "A short video highlighting..."
    - "An animation presenting..."
    - "A long-form video showcasing..."
+12. Return ONLY the analysis text. Do NOT include any meta-commentary, mode selection justifications, or introductory phrases like "Mode B is selected because...". Start immediately with the analysis.
 
 If logical flow is unclear, prioritise clarity over stylistic variation.
 Avoid decorative language.
