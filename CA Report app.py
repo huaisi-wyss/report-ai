@@ -62,7 +62,7 @@ categories = sorted([
     "New Launch", "Festive", "Events", "Activations",
     "Recipes", "No Category"
 ])
-# NEW: Define post formats
+# Post formats
 post_formats = sorted([
     "Static Post",
     "Carousel",
@@ -77,7 +77,7 @@ if 'captions_list' not in st.session_state:
 def add_caption():
     st.session_state.captions_list.append({"caption": "", "cat": categories[0], "format": post_formats[0]})
 
-# Render inputs for each caption - Now using 3 columns
+# Render inputs for each caption - Using 3 columns
 for i, item in enumerate(st.session_state.captions_list):
     col_a, col_b, col_c = st.columns([2, 1, 1])
     with col_a:
@@ -85,7 +85,6 @@ for i, item in enumerate(st.session_state.captions_list):
     with col_b:
         item["cat"] = st.selectbox(f"Category {i+1}", categories, index=categories.index(item["cat"]), key=f"cat_{i}")
     with col_c:
-        # NEW: Format selector
         item["format"] = st.selectbox(f"Format {i+1}", post_formats, index=post_formats.index(item["format"]), key=f"format_{i}")
 
 st.button("➕ Add Another Caption", on_click=add_caption)
@@ -162,7 +161,6 @@ if st.button("🚀 Generate Grouped Report"):
             for cat in CATEGORY_ORDER:
                 if cat in grouped_data:
                     for entry in grouped_data[cat]:
-                        # NEW: Explicitly pass format to the prompt
                         data_string += f"ITEM {idx} [Category: {cat}] [Format: {entry['format']}]: {entry['text']}\n"
                         idx += 1
 
@@ -218,21 +216,39 @@ STRICT RULES:
 1. Mode A:
    - Group analysis under category headings using the SAME category names.
    - One analysis paragraph per caption.
+   - Do NOT restate the category inside each paragraph.
+   - Multiple captions under the same category should appear under one heading.
 2. Mode B:
-   - Do NOT use category headings.
+   - DO NOT group by category.
+   - DO NOT mention category names.
+   - Provide 4 to 6 bullet points only.
    - Output only synthesised bullet points.
+   - Focus on strategic patterns across captions.
 3. IDENTIFICATION RULE:
    - Required in Mode A.
    - Optional in Mode B, only if it adds clarity.
 4. Do NOT repeat, paraphrase, or rewrite caption text.
 5. Do NOT add introductions, summaries, or conclusions.
 6. Do NOT explain your thinking or methodology.
-7. Match the tone, sentence length, and analytical depth of the REFERENCE exactly.
-8. Keep language professional, objective, neutral, and CA-report ready.
+7. Keep sentences concise. Avoid long compound structures.
+8. Match the tone, sentence length, and analytical depth of the REFERENCE exactly.
+9. Keep language professional, objective, neutral, and CA-report ready.
+10. You MUST identify the specific content format.
+   Use phrases like:
+   - "A static post of..."
+   - "The carousel featuring..."
+   - "A short video highlighting..."
+   - "An animation presenting..."
+   - "A long-form video showcasing..."
+
+If logical flow is unclear, prioritise clarity over stylistic variation.
+Avoid decorative language.
 
 OUTPUT FORMAT:
 Mode A:
 Category Heading
+• Analysis paragraph
+[Next Category Heading]
 • Analysis paragraph
 
 Mode B:
