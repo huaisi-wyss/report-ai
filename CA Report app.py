@@ -177,15 +177,11 @@ The text below represents the exact tone, sentence structure, and analytical dep
 You must mirror this writing style precisely.
 {reference_instruction}
 
-STRICTNESS LEVEL:
-- Very Safe: purely descriptive, no implied judgement.
-- Balanced: light strategic framing.
-- Strategic: clearer implication on brand and communication effectiveness.
+STRICTNESS: {strictness}
+SELECTED MODE: {mode_selection}
 
-Use level: {strictness}
-
-SYSTEM MODE CONTROL:
-User selected mode: {mode_selection}
+INPUT DATA:
+{data_string}
 
 If mode is Auto, decide intelligently.
 If Mode A is selected, force Itemised Content Analysis.
@@ -209,11 +205,6 @@ Mode B — Strategic Content Synthesis
 - Do NOT force one bullet per caption.
 
 If a human CA strategist would naturally summarise rather than itemise, you must do the same.
-
-NEW CONTENT INPUT:
-Each item includes a category and a caption.
-
-{data_string}
 
 STRICT RULES:
 1. Mode A:
@@ -252,17 +243,8 @@ If logical flow is unclear, prioritise clarity over stylistic variation.
 Avoid decorative language.
 
 OUTPUT FORMAT:
-Mode A:
-**Category Heading**
-• Analysis paragraph
-
-[**Next Category Heading**]
-• Analysis paragraph
-
-Mode B:
-• Strategic synthesis bullet
-• Strategic synthesis bullet
-• Strategic synthesis bullet
+If Mode A: **Category** \n • Analysis
+If Mode B: • Strategic Bullet
 
 Return ONLY the final analysis.
 """
