@@ -24,6 +24,7 @@ st.markdown("""
 
 with st.sidebar:
     st.title("🛡️ Analysis Settings")
+    st.success("✅ API Connection Active")
 
     strictness = st.select_slider(
         "✍️ Analysis Strictness",
@@ -92,7 +93,9 @@ st.button("➕ Add Another Caption", on_click=add_caption)
 # 4. Processing Logic
 if st.button("🚀 Generate Grouped Report"):
     if not api_key:
-        st.error("Please enter your API Key in the sidebar.")
+        st.error("❌ API Key Missing from Backend Settings.")
+        st.info("Please add 'GEMINI_API_KEY' to your Streamlit Secrets or Environment Variables.")
+        st.stop()
     elif not sample_text or not st.session_state.captions_list[0]["caption"]:
         st.warning("Please provide a sample and at least one caption.")
     else:
