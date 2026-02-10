@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 from collections import defaultdict
 import os
-api_key = os.environ.get("GEMINI_API_KEY")
+api_key = st.secrets.get("GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY")
 
 st.set_page_config(page_title="Social Media Report Pro", layout="wide")
 
