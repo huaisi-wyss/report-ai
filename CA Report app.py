@@ -249,8 +249,9 @@ Avoid decorative language.
 
 OUTPUT FORMAT:
 Mode A:
-Category Heading
+**Category Heading**
 • Analysis paragraph
+
 [Next Category Heading]
 • Analysis paragraph
 
