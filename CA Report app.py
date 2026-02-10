@@ -230,10 +230,13 @@ STRICT RULES:
 4. Do NOT repeat, paraphrase, or rewrite caption text.
 5. Do NOT add introductions, summaries, or conclusions.
 6. Do NOT explain your thinking or methodology.
-7. Keep sentences concise. Avoid long compound structures.
-8. Match the tone, sentence length, and analytical depth of the REFERENCE exactly.
-9. Keep language professional, objective, neutral, and CA-report ready.
-10. You MUST identify the specific content format.
+7. Follow strict logical flow:
+   WHAT the content is → WHAT it does → WHY it matters.
+   (Recommend 1 sentence. Maximum 2 sentences. Each bullet point under 25 words.)
+8. Keep sentences concise. Avoid long compound structures.
+9. Match the tone, sentence length, and analytical depth of the REFERENCE exactly.
+10. Keep language professional, objective, neutral, and CA-report ready.
+11. You MUST identify the specific content format.
    Use phrases like:
    - "A static post of..."
    - "The carousel featuring..."
